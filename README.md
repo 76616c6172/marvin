@@ -22,6 +22,7 @@ Go to:
 
 Modify this link with the `APPLICATION_ID` from step 1.  
 `https://discord.com/oauth2/authorize?client_id=<APPLICATION_ID>&permissions=8&scope=bot`  
+
 Then copy paste the in the browser and invite the bot to your server.
 
 **Step 3** Compile the bot
@@ -34,7 +35,7 @@ Modify the code to your liking and compile the bot
 ./build_bot.sh
 ```
 
-**Step 3** Add the authorization token
+**Step 4** Add the authorization token
 
 Edit run_bot.sh and add the `TOKEN` from step 1 and Execute run_bot.sh
 ```bash

@@ -69,7 +69,7 @@ func handle_interactive_command(s *discordgo.Session, m *discordgo.MessageCreate
 	for _, role := range DOOM_ROLES {
 		err := s.GuildMemberRoleRemove(SERVER_ID, m.Author.ID, role)
 		if err != nil {
-			print_and_log_error("error assigning role", err)
+			print_and_log_error("error unassigning role", err)
 		}
 
 	}

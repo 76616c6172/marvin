@@ -20,21 +20,19 @@ Go to:
 
 **Step 2** Invite the bot to your server
 
-Modify this link with the `APPLICATION_ID` from step 1
-Copy paste the link in the browser and invite the bot to your server
-https://discord.com/oauth2/authorize?client_id=<APPLICATION_ID>&permissions=8&scope=bot
-SECRET
+Modify this link with the `APPLICATION_ID` from step 1.  
+`https://discord.com/oauth2/authorize?client_id=<APPLICATION_ID>&permissions=8&scope=bot`  
+Then copy paste the in the browser and invite the bot to your server.
 
 **Step 3** Compile the bot
 
 [Install Go](https://go.dev/doc/install) if you haven't already.
 
+Modify the code to your liking and compile the bot
+
 ```bash
 ./build_bot.sh
 ```
-
-Modify the code to your liking and compile the bot
-
 
 **Step 3** Add the authorization token
 

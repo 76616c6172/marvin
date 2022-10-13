@@ -89,22 +89,20 @@ func handle_server_event(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if USER_IS_USING_INTERACTIVE_CMD[m.Author.ID] {
 		handle_interactive_command(s, m)
-	} else {
-		if m.Message.Content == "/choose" || m.Type == discordgo.MessageTypeGuildMemberJoin {
+	} else if m.Message.Content == "/choose" || m.Type == discordgo.MessageTypeGuildMemberJoin {
 
-			bot_reply := m.Author.Mention() + " " + WELCOME_MSG
-			bot_reply += "\n**Choose from:**\n"
-			for role_name, _ := range DOOM_ROLES {
-				bot_reply += fmt.Sprintf("%s\n", role_name)
-			}
-
-			_, err := s.ChannelMessageSend(m.ChannelID, bot_reply)
-			if err != nil {
-				print_and_log_error("error sending message", err)
-			}
-
-			USER_IS_USING_INTERACTIVE_CMD[m.Author.ID] = true
+		new_message := m.Author.Mention() + " " + WELCOME_MSG
+		new_message += "\n**Choose from:**\n"
+		for role_name, _ := range DOOM_ROLES {
+			new_message += fmt.Sprintf("%s\n", role_name)
 		}
+
+		_, err := s.ChannelMessageSend(m.ChannelID, new_message)
+		if err != nil {
+			print_and_log_error("error sending message", err)
+		}
+
+		USER_IS_USING_INTERACTIVE_CMD[m.Author.ID] = true
 	}
 }
 
@@ -118,6 +116,7 @@ func main() {
 		os.Exit(1)
 	}
 	discord_session.Identify.Intents = discordgo.IntentsAll // receive all server events
+
 	discord_session.AddHandler(handle_server_event)
 
 	if err = discord_session.Open(); err != nil {
